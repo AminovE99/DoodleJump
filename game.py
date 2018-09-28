@@ -1,57 +1,50 @@
 import pygame
+from Doodler import Doodler
+import random
 
 pygame.init()
-win = pygame.display.set_mode((500, 500))
+win = pygame.display.set_mode((700, 700))
 pygame.display.set_caption("Doodle Jump")
 run = True
 
-
-class Character:
-	width = 10
-	height = 5
-	jumpCount = 10
-	x = 100
-	y = 400
-	isJump = False
-	speed = 5;
-
-
-class Platform:
-	start = 0
-	end = 0
-
-	def __init__(self, start, end):
-		self.start = start
-		self.end = end
-		pygame.draw.line(win, (255, 255, 255), start, end, 3)
+WHITE = (255, 255, 255)
+BLUE = (0, 0, 155)
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+BGCOLOR = BLUE
 
 
 def jump():
-	chr.isJump = True
-	if (chr.jumpCount >= -10):
-		if (chr.jumpCount < 0):
-			chr.y += int(chr.jumpCount ** 2 / 3)
+	doodler.isJump = True
+	if (doodler.jumpCount >= -10):
+		if (doodler.jumpCount < 0):
+			doodler.y += int(doodler.jumpCount ** 2 / 3)
 		else:
-			chr.y -= int(chr.jumpCount ** 2 / 3)
-		chr.jumpCount -= 1
+			doodler.y -= int(doodler.jumpCount ** 2 / 3)
+		doodler.jumpCount -= 1
 	else:
-		chr.isJump = False
-		chr.jumpCount = 10
+		doodler.isJump = False
+		doodler.jumpCount = 10
 
 
-chr = Character()
+doodler = Doodler()
+
+pygame.draw.line(win, BLUE, (doodler.x, doodler.y - 20), (doodler.x, doodler.y - 20))
 while (run):
-	platform = Platform(300, 400)
 	keys = pygame.key.get_pressed()
-	if (keys[pygame.K_LEFT]):
-		chr.x -= chr.speed
-	if (keys[pygame.K_RIGHT]):
-		chr.x += chr.speed
-	win.fill((0, 0, 0))
-	pygame.draw.circle(win, (0, 0, 255), (chr.x, chr.y), chr.width, chr.height)
+	if keys[pygame.K_LEFT]:
+		doodler.x -= doodler.speed
+	if keys[pygame.K_RIGHT]:
+		doodler.x += doodler.speed
+	win.blit(doodler.image, [doodler.x, doodler.y])
 	jump()
+	pygame.draw.line(win, (255, 0, 0), [500,550], [600, 600], 10)
+	
 	pygame.display.update()
 	pygame.time.delay(50)
+	win.fill((255, 255, 255))
+
+
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			run = False
