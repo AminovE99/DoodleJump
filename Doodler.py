@@ -15,7 +15,7 @@ class Doodler(pygame.sprite.Sprite):
 		image = self.image
 		self.rect = self.image.get_rect()
 
-	def update(self):
+	def update(self,win):
 		keys = pygame.key.get_pressed()
 		if keys[pygame.K_LEFT]:
 			self.x -= self.speed

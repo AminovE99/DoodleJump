@@ -9,7 +9,7 @@ class Platform(pygame.sprite.Sprite):
 	doodler = 9
 	image = 0;
 
-	def __init__(self,):
+	def __init__(self):
 		super(Platform, self).__init__()
 		self.image = pygame.image.load('static/platform.png')
 		image = self.image
