@@ -9,8 +9,6 @@ class Doodler(pygame.sprite.Sprite):
 	speed = 5
 	image = 0
 
-
-
 	def __init__(self):
 		super(Doodler, self).__init__()
 		self.image = pygame.image.load('static/dog_right.png')
@@ -25,5 +23,3 @@ class Doodler(pygame.sprite.Sprite):
 		if keys[pygame.K_RIGHT]:
 			self.x += self.speed
 			self.image = pygame.image.load('static/dog_right.png')
-
-
