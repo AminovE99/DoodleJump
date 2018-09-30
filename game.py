@@ -16,7 +16,7 @@ class DoodleJump:
         self.run = True
         self.platforms = [[400, 500]]
         self.sprite_group = pygame.sprite.Group()  # не надо?
-        self.platform = pygame.image.load("static/platform.png").convert_alpha()
+        self.platform = pygame.image.load("static/platform_mini.png").convert_alpha()
         self.player = pygame.image.load("static/dog_right.png")
         self.playerX = 600  # Связать с классом Doodler
         self.playerY = 600
