@@ -2,9 +2,9 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/venv/Include" />
+      <excludeFolder url="file://$MODULE_DIR$/env" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (DoodleJump)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (DoodleJump)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
