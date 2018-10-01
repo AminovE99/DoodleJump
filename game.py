@@ -40,6 +40,7 @@ class DoodleJump:
             pygame.draw.line(self.win, (222, 222, 222), (0, x * 12), (800, x * 12))
 
     def drawPlatforms(self):
+        # if
         for p in self.platforms:
             a = random.randint(0, 700)
             self.win.blit(self.platform, (p[0], p[1]))
@@ -57,15 +58,15 @@ class DoodleJump:
         doodler = Doodler()
         while (self.run):
             # drawGrid()
-            self.win.blit(doodler.image, [doodler.x, doodler.y])
             self.drawPlatforms()
             self.updatePlatforms()
+            self.win.blit(doodler.image, [doodler.x, doodler.y])
             self.sprite_group.draw(self.win)
             doodler.update()
             self.jump(doodler)
             pygame.display.update()
             pygame.time.delay(50)
-            self.win.fill((255, 255, 255))
+            self.win.fill((0, 220, 255))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
