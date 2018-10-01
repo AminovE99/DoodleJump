@@ -14,7 +14,7 @@ class DoodleJump:
     def __init__(self):
         self.win = pygame.display.set_mode((700, 700))
         self.run = True
-        self.platforms = [[400, 500]]
+        self.platforms = [[400, 500]]#spritecollide and groupcollide
         self.sprite_group = pygame.sprite.Group()  # не надо?
         self.platform = pygame.image.load("static/platform_mini.png").convert_alpha()
         self.player = pygame.image.load("static/dog_right.png")
