@@ -12,5 +12,4 @@ class Platform(pygame.sprite.Sprite):
     def __init__(self):
         super(Platform, self).__init__()
         self.image = pygame.image.load('static/platform.png')
-        image = self.image
         self.rect = self.image.get_rect()

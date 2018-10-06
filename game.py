@@ -15,13 +15,12 @@ class DoodleJump:
         self.win = pygame.display.set_mode((700, 700))
         self.run = True
         self.platforms = [[400, 700, 0, 0]]  # spritecollide and groupcollide
-        self.sprite_group = pygame.sprite.Group()  # не надо?
+        #self.sprite_group = pygame.sprite.Group()  # не надо?
         self.platform = pygame.image.load("static/platform_mini.png")
         self.player = pygame.image.load("static/dog_right.png")
-        self.playerX = 600  # Связать с классом Doodler
-        self.playerY = 600
+        #self.playerX = 600  # Связать с классом Doodler
+        #self.playerY = 600
         self.doodler = Doodler()
-        self.minY = 0
 
     # это в класс Дудлер
     # def jump(self):
@@ -41,13 +40,11 @@ class DoodleJump:
         # if
         for p in self.platforms:
             a = random.randint(0, 700)
-            self.win.blit(self.platform, (p[0], p[1]))
-        self.platforms.append([a, self.platforms[-1][1] - 50, 0, 0])
-        check = self.platforms[1][1] - self.doodler.cameray
-        if check > 600:
-            self.platforms.pop(0)
-            self.platforms.append([random.randint(0, 700), self.platforms[-1][1] - 50, 0, 0])
             self.win.blit(self.platform, (p[0], p[1] - self.doodler.cameray))
+        self.platforms.append([a, self.platforms[-1][1] - 50, 0, 0])
+        if self.platforms[1][1] - self.doodler.cameray > 900:
+            self.platforms.pop(0)
+        self.platforms.append([random.randint(0, 700), self.platforms[-1][1] - 50, 0, 0])
 
     def updatePlatforms(self):
         player = pygame.Rect(self.doodler.x, self.doodler.y, self.player.get_width(), self.player.get_height() - 10)
@@ -78,7 +75,7 @@ class DoodleJump:
             self.win.blit(self.doodler.image, [self.doodler.x, self.doodler.y])
             # self.sprite_group.draw(self.win)
             self.doodler.update()
-            self.playerX = self.doodler.x  # не должно находиться в main
+           # self.playerX = self.doodler.x  # не должно находиться в main
             # self.jump()
             pygame.display.update()
             pygame.time.delay(25)
