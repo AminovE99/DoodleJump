@@ -24,18 +24,18 @@ class DoodleJump:
         self.minY = 0
 
     # это в класс Дудлер
-    def jump(self):
-        self.doodler.isJump = True
-        if self.doodler.jumpCount >= -10:
-            if self.doodler.jumpCount < 0:
-                self.doodler.y += int(self.doodler.jumpCount ** 2 / 2)
-
-            else:
-                self.doodler.y -= int(self.doodler.jumpCount ** 2 / 2)
-            self.doodler.jumpCount -= 1
-        else:
-            self.doodler.isJump = False
-            self.doodler.jumpCount = 10
+    # def jump(self):
+    #     self.doodler.isJump = True
+    #     if self.doodler.jumpCount >= -10:
+    #         if self.doodler.jumpCount < 0:
+    #             self.doodler.y += int(self.doodler.jumpCount ** 2 / 2)
+    #
+    #         else:
+    #             self.doodler.y -= int(self.doodler.jumpCount ** 2 / 2)
+    #         self.doodler.jumpCount -= 1
+    #     else:
+    #         self.doodler.isJump = False
+    #         self.doodler.jumpCount = 10
 
     def drawPlatforms(self):
         # if
@@ -81,7 +81,7 @@ class DoodleJump:
             self.playerX = self.doodler.x  # не должно находиться в main
             # self.jump()
             pygame.display.update()
-            pygame.time.delay(50)
+            pygame.time.delay(25)
             self.win.fill((0, 220, 255))
 
             for event in pygame.event.get():
