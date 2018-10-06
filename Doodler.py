@@ -7,13 +7,12 @@ class Doodler(pygame.sprite.Sprite):
     y = 600
     isJump = False
     speed = 25  # скорость дудлера по горизонтали
-    image = 0
-
     def __init__(self):
         super(Doodler, self).__init__()
         self.image = pygame.image.load('static/dog_right.png')
-        image = self.image
         self.rect = self.image.get_rect()
+        self.jump = 0
+        self.gravity = 0
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -23,3 +22,11 @@ class Doodler(pygame.sprite.Sprite):
         if keys[pygame.K_RIGHT] and self.x < 600:
             self.x += self.speed
             self.image = pygame.image.load('static/dog_right.png')
+
+        if not self.jump:
+            self.y += self.gravity
+            self.gravity +=1
+        elif self.jump:
+            self.y -= self.jump
+            self.jump -= 1
+
