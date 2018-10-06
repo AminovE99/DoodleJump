@@ -12,7 +12,7 @@ class Doodler(pygame.sprite.Sprite):
         super(Doodler, self).__init__()
         self.image = pygame.image.load('static/dog_right.png')
         self.rect = self.image.get_rect()
-        self.jump = 0
+        self.jump = 10
         self.gravity = 0
         self.cameray = 0
 

@@ -12,7 +12,6 @@ class DoodleJump:
     platforms = []  # координаты платформ
 
     def __init__(self):
-        self.gravity = 0
         self.win = pygame.display.set_mode((700, 700))
         self.run = True
         self.platforms = [[400, 700, 0, 0]]  # spritecollide and groupcollide
@@ -44,11 +43,11 @@ class DoodleJump:
             a = random.randint(0, 700)
             self.win.blit(self.platform, (p[0], p[1]))
         self.platforms.append([a, self.platforms[-1][1] - 50, 0, 0])
-        check = self.platforms[1][1] -self.doodler.cameray
+        check = self.platforms[1][1] - self.doodler.cameray
         if check > 600:
             self.platforms.pop(0)
             self.platforms.append([random.randint(0, 700), self.platforms[-1][1] - 50, 0, 0])
-            self.win.blit(self.platform,(p[0],p[1]-self.doodler.cameray))
+            self.win.blit(self.platform, (p[0], p[1] - self.doodler.cameray))
 
     def updatePlatforms(self):
         player = pygame.Rect(self.doodler.x, self.doodler.y, self.player.get_width(), self.player.get_height() - 10)
@@ -57,7 +56,7 @@ class DoodleJump:
             if rect.colliderect(player) and self.doodler.gravity and self.doodler.y < p[1] - self.doodler.cameray:
                 if p[2] != 2:
                     self.doodler.jump = 15
-                    self.gravity = 0
+                    self.doodler.gravity = 0
                 else:
                     p[-1] = 1
             if p[2] == 1:
@@ -77,7 +76,7 @@ class DoodleJump:
             self.drawPlatforms()
             self.updatePlatforms()
             self.win.blit(self.doodler.image, [self.doodler.x, self.doodler.y])
-            self.sprite_group.draw(self.win)
+            # self.sprite_group.draw(self.win)
             self.doodler.update()
             self.playerX = self.doodler.x  # не должно находиться в main
             # self.jump()
