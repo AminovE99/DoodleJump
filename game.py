@@ -22,7 +22,6 @@ class DoodleJump:
         self.playerX = 600  # Связать с классом Doodler
         self.playerY = 600
         self.doodler = Doodler()
-        self.cameray = 0
         self.minY = 0
 
     # это в класс Дудлер
@@ -39,23 +38,23 @@ class DoodleJump:
             self.doodler.isJump = False
             self.doodler.jumpCount = 10
 
-    def drawGrid(self):
-        for x in range(80):
-            pygame.draw.line(self.win, (222, 222, 222), (x * 12, 0), (x * 12, 600))
-            pygame.draw.line(self.win, (222, 222, 222), (0, x * 12), (800, x * 12))
-
     def drawPlatforms(self):
         # if
         for p in self.platforms:
             a = random.randint(0, 700)
             self.win.blit(self.platform, (p[0], p[1]))
-        self.platforms.append([a, self.platforms[-1][1] - 50,0,0])
+        self.platforms.append([a, self.platforms[-1][1] - 50, 0, 0])
+        check = self.platforms[1][1] -self.doodler.cameray
+        if check > 600:
+            self.platforms.pop(0)
+            self.platforms.append([random.randint(0, 700), self.platforms[-1][1] - 50, 0, 0])
+            self.win.blit(self.platform,(p[0],p[1]-self.doodler.cameray))
 
     def updatePlatforms(self):
         player = pygame.Rect(self.doodler.x, self.doodler.y, self.player.get_width(), self.player.get_height() - 10)
         for p in self.platforms:
             rect = pygame.Rect(p[0], p[1], self.platform.get_width(), self.platform.get_height())
-            if rect.colliderect(player) and self.doodler.gravity and self.doodler.y < p[1] - self.cameray:
+            if rect.colliderect(player) and self.doodler.gravity and self.doodler.y < p[1] - self.doodler.cameray:
                 if p[2] != 2:
                     self.doodler.jump = 15
                     self.gravity = 0

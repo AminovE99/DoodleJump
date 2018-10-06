@@ -1,6 +1,7 @@
 import pygame
 
 
+
 class Doodler(pygame.sprite.Sprite):
     jumpCount = 10
     x = 600
@@ -13,6 +14,7 @@ class Doodler(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.jump = 0
         self.gravity = 0
+        self.cameray = 0
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -29,4 +31,5 @@ class Doodler(pygame.sprite.Sprite):
         elif self.jump:
             self.y -= self.jump
             self.jump -= 1
-
+        if self.y - self.cameray <= 200:
+            self.cameray -= 10
