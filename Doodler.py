@@ -12,9 +12,10 @@ class Doodler(pygame.sprite.Sprite):
         super(Doodler, self).__init__()
         self.image = pygame.image.load('static/dog_right.png')
         self.rect = self.image.get_rect()
-        self.jump = 10
+        self.jump = 5
         self.gravity = 0
         self.cameray = 0
+        self.delta = 0
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -27,12 +28,14 @@ class Doodler(pygame.sprite.Sprite):
 
         if not self.jump:
             self.y += self.gravity
-            self.gravity +=1
+            self.gravity +=2
         elif self.jump:
             self.y -= self.jump
             self.jump -= 1
-        print(self.cameray)
-        if self.y - self.cameray <= 600:
+        print('self.cameray: %s' % self.cameray)
+        print('self.y: %s' % self.y)
+        if self.y - self.cameray < 200:
             self.cameray -= 10
+        delta = self.y-self.cameray
 
 

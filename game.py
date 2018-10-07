@@ -15,11 +15,11 @@ class DoodleJump:
         self.win = pygame.display.set_mode((700, 700))
         self.run = True
         self.platforms = [[400, 700, 0, 0]]  # spritecollide and groupcollide
-        #self.sprite_group = pygame.sprite.Group()  # не надо?
+        # self.sprite_group = pygame.sprite.Group()  # не надо?
         self.platform = pygame.image.load("static/platform_mini.png")
         self.player = pygame.image.load("static/dog_right.png")
-        #self.playerX = 600  # Связать с классом Doodler
-        #self.playerY = 600
+        # self.playerX = 600  # Связать с классом Doodler
+        # self.playerY = 600
         self.doodler = Doodler()
 
     # это в класс Дудлер
@@ -72,13 +72,13 @@ class DoodleJump:
             # drawGrid()
             self.drawPlatforms()
             self.updatePlatforms()
-            self.win.blit(self.doodler.image, [self.doodler.x, self.doodler.y])
+            self.win.blit(self.doodler.image, [self.doodler.x, self.doodler.y - self.doodler.cameray])
             # self.sprite_group.draw(self.win)
             self.doodler.update()
-           # self.playerX = self.doodler.x  # не должно находиться в main
+            # self.playerX = self.doodler.x  # не должно находиться в main
             # self.jump()
             pygame.display.update()
-            pygame.time.delay(25)
+            pygame.time.delay(30)
             self.win.fill((0, 220, 255))
 
             for event in pygame.event.get():
