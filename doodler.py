@@ -32,8 +32,5 @@ class Doodler(pygame.sprite.Sprite):
         elif self.jump:
             self.y -= self.jump
             self.jump -= 1
-        print('self.cameray: %s' % self.cameray)
-        print('self.y: %s' % self.y)
         if self.y - self.cameray < 200:
             self.cameray -= 10
-        delta = self.y-self.cameray
