@@ -17,6 +17,7 @@ class DoodleJump:
         # self.sprite_group = pygame.sprite.Group()  # не надо?
         self.platform = pygame.image.load("static/platform_mini.png")
         self.doodler = Doodler()
+        self.curr_level = 50
         self.run = True
 
     # self.font = pygame.font.SysFont('Arial', 25)
@@ -44,7 +45,6 @@ class DoodleJump:
         self.platforms.append([a, self.platforms[-1][1] - 50, 0])
 
         self.platforms.append([random.randint(0, 700), self.platforms[-1][1] - 100, 0])
-
         if self.platforms[1][1] - self.doodler.cameray > 900:
             self.platforms.pop(0)
 
