@@ -13,10 +13,11 @@ class DoodleJump:
 
     def __init__(self):
         self.window = pygame.display.set_mode((700, 700))
-        self.platforms = [[400, 700, 0, 0]]  # spritecollide and groupcollide
+        self.platforms = [[550, 680, 0, 0]]  # spritecollide and groupcollide
         # self.sprite_group = pygame.sprite.Group()  # не надо?
         self.platform = pygame.image.load("static/platform_mini.png")
         self.doodler = Doodler()
+        self.curr_level = 50
         self.run = True
 
     # это в класс Дудлер
@@ -35,17 +36,11 @@ class DoodleJump:
 
     def draw_platforms(self):
         for platform in self.platforms:
-            a = random.randint(0, 700)
             self.window.blit(self.platform,
                              (platform[0], platform[1] - self.doodler.cameray))
 
-        self.platforms.append([a,
-                               self.platforms[-1][1] - 50,
-                               0,
-                               0])
-
         self.platforms.append([random.randint(0, 700),
-                               self.platforms[-1][1] - 50,
+                               self.platforms[-1][1] - 120,
                                0,
                                0])
 
