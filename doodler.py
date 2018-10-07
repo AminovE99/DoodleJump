@@ -1,13 +1,13 @@
 import pygame
 
 
-
 class Doodler(pygame.sprite.Sprite):
     jumpCount = 10
     x = 600
     y = 600
     isJump = False
     speed = 25  # скорость дудлера по горизонтали
+
     def __init__(self):
         super(Doodler, self).__init__()
         self.image = pygame.image.load('static/dog_right.png')
@@ -27,12 +27,11 @@ class Doodler(pygame.sprite.Sprite):
 
         if not self.jump:
             self.y += self.gravity
-            self.gravity +=1
-        elif self.jump:
+            self.gravity += 1
+        else:
             self.y -= self.jump
             self.jump -= 1
+
         print(self.cameray)
         if self.y - self.cameray <= 600:
             self.cameray -= 10
-
-
