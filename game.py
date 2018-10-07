@@ -57,10 +57,8 @@ class DoodleJump:
         for platform in self.platforms:
             rect = pygame.Rect(platform[0], platform[1], self.platform.get_width(), self.platform.get_height())
             if rect.colliderect(player) and self.doodler.gravity and self.doodler.y < platform[1] - self.doodler.cameray:
-                platform.remo
                 self.doodler.jump = 15
                 self.doodler.gravity = 0
-                self.platforms.pop(i)
 
     def isDeath(self):
         if self.doodler.y - self.doodler.cameray > 1000:
