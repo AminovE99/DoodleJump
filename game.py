@@ -52,7 +52,7 @@ class DoodleJump:
         player = pygame.Rect(self.doodler.x,
                              self.doodler.y,
                              self.doodler.image.get_width(),
-                             self.doodler.image.get_height() - 10)
+                             self.doodler.image.get_height()-10)
 
         for platform in self.platforms:
             rect = pygame.Rect(platform[0], platform[1], self.platform.get_width(), self.platform.get_height())
@@ -70,7 +70,8 @@ class DoodleJump:
 
         while self.run:
             # drawGrid()
-            self.update_platforms()
+            if(self.doodler.y - self.doodler.cameray < 1000):
+                self.update_platforms()
             self.draw_platforms()
             self.window.blit(self.doodler.image, [self.doodler.x, self.doodler.y - self.doodler.cameray])
             # self.sprite_group.draw(self.win)
@@ -79,7 +80,6 @@ class DoodleJump:
             # self.jump()
             pygame.display.update()
             pygame.time.delay(30)
-            print(self.doodler.y)
             self.window.fill((0, 220, 255))
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
