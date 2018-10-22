@@ -7,7 +7,6 @@ import random
 
 
 class DoodleJump:
-    pygame.init()
     pygame.display.set_caption("Doodle Jump")
     platforms = []  # координаты платформ
 
@@ -63,8 +62,6 @@ class DoodleJump:
     def isDeath(self):
         if self.doodler.y - self.doodler.cameray > 1000:
             self.platforms = [[0, -100, 0]]
-            print("Умер")
-
     def main(self):
         platform = Platform()
 
